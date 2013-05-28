@@ -1,4 +1,4 @@
-oogzy-miscellaneous
+oogzy-commons v0.1
 ===================
 
-Miscellaneous classes
+Oogzy Commons library.
