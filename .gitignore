@@ -4,3 +4,6 @@
 # Folders
 target
 bin
+
+# OS System files
+.DS_Store
