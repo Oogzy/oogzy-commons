@@ -11,6 +11,8 @@ import org.slf4j.LoggerFactory;
 
 public class Settings
 {
+	public static final String PROPERTIES_FILE_PATH = "app.properties";
+
 	private static final Logger log = LoggerFactory.getLogger(Settings.class);
 
 	private static Settings me = new Settings();
@@ -27,12 +29,17 @@ public class Settings
 		properties = new Properties();
 		try
 		{
-			properties.load(new FileReader(new File("app.properties")));
+			properties.load(new FileReader(new File(PROPERTIES_FILE_PATH)));
 		}
 		catch (Exception e)
 		{
 			log.warn("Could not load settings...", e);
 		}
+	}
+
+	public Properties getProperties()
+	{
+		return properties;
 	}
 
 	public String get(String key)
@@ -69,7 +76,8 @@ public class Settings
 		for (Object okey : properties.keySet())
 		{
 			String key = (String) okey;
-			keys.add(key);
+			if (key.startsWith(prefix))
+				keys.add(key);
 		}
 		return keys;
 	}
