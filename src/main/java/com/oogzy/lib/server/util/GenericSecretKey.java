@@ -6,8 +6,6 @@ import javax.crypto.SecretKey;
 
 public class GenericSecretKey implements SecretKey
 {
-	private static final long serialVersionUID = 1L;
-
 	private String key;
 
 	public GenericSecretKey(String key)

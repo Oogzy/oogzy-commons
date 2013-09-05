@@ -27,11 +27,11 @@ public class Settings
 		properties = new Properties();
 		try
 		{
-			properties.load(new FileReader(new File("store.properties")));
+			properties.load(new FileReader(new File("app.properties")));
 		}
 		catch (Exception e)
 		{
-			log.warn("Could now load settings...", e);
+			log.warn("Could not load settings...", e);
 		}
 	}
 

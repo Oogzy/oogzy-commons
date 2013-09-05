@@ -4,13 +4,13 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
 
-public class MapCounterFloat<K>
+public class MapCounterDouble<K>
 {
-	private Map<K, Float> map = new HashMap<K, Float>();
+	private Map<K, Double> map = new HashMap<K, Double>();
 
-	public void add(K key, float x)
+	public void add(K key, double x)
 	{
-		Float i = map.get(key);
+		Double i = map.get(key);
 		if (i == null)
 			i = x;
 		else
@@ -18,18 +18,18 @@ public class MapCounterFloat<K>
 		map.put(key, i);
 	}
 
-	public void set(K key, float x)
+	public void set(K key, double x)
 	{
 		map.put(key, x);
 	}
 
-	public float get(K key)
+	public double get(K key)
 	{
-		Float i = map.get(key);
+		Double i = map.get(key);
 		if (i == null)
 			return 0;
 		else
-			return i.floatValue();
+			return i.doubleValue();
 	}
 
 	public Set<K> getKeys()
@@ -37,9 +37,9 @@ public class MapCounterFloat<K>
 		return map.keySet();
 	}
 
-	public float limitSub(K key, float sub, float min)
+	public double limitSub(K key, double sub, double min)
 	{
-		float cur = get(key);
+		double cur = get(key);
 		if (cur >= sub)
 		{
 			add(key, -sub);
@@ -47,7 +47,7 @@ public class MapCounterFloat<K>
 		}
 		else
 		{
-			map.put(key, 0f);
+			map.put(key, 0.0);
 			return cur;
 		}
 	}
