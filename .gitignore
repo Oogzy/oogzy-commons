@@ -7,3 +7,8 @@ bin
 
 # OS System files
 .DS_Store
+
+# IDE files
+.classpath
+.project
+.settings
