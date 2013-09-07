@@ -75,12 +75,12 @@ public class AWSMailer extends Mailer
 		catch (IOException e)
 		{
 			credentials = null;
-			log.warn("Exception creating AWSCredentials with default app settings.", e);
+			log.warn("Exception creating AWSCredentials.", e);
 		}
 		return credentials;
 	}
 
-	public String getFrom()
+	public String getFromAddress()
 	{
 		return getProperty("mail.aws.from");
 	}
@@ -96,8 +96,13 @@ public class AWSMailer extends Mailer
 
 	public void send(Email email)
 	{
-		SendEmailRequest request = new SendEmailRequest().withSource(getFrom());
+		String sourceAddress;
+		if (email.getFromAddress() != null)
+			sourceAddress = email.getFromAddress();
+		else
+			sourceAddress = getFromAddress();
 
+		SendEmailRequest request = new SendEmailRequest().withSource(sourceAddress);
 		Destination destination = new Destination().withToAddresses(email.getToAddress());
 		request.setDestination(destination);
 
@@ -107,7 +112,7 @@ public class AWSMailer extends Mailer
 		msg.withSubject(subject);
 
 		Content content = new Content();
-		content.withData(email.getContent());
+		content.withData(email.getBody());
 
 		Body body = new Body();
 		if (email.isHtmlBody())

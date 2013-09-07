@@ -52,7 +52,7 @@ public class SMTPMailer extends Mailer
 		return (getUsername() != null && getPassword() != null);
 	}
 
-	public String getFrom()
+	public String getFromAddress()
 	{
 		String from = getUsername();
 		if (from == null)
@@ -66,7 +66,7 @@ public class SMTPMailer extends Mailer
 	{
 		MimeMessage message = new MimeMessage(getSession());
 
-		InternetAddress from = getAddress(getFrom());
+		InternetAddress from = getAddress(getFromAddress());
 		InternetAddress to = getAddress(email.getToAddress());
 
 		try

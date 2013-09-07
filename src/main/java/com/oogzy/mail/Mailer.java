@@ -4,7 +4,7 @@ import java.util.Properties;
 
 import com.oogzy.lib.server.util.Settings;
 
-public abstract class Mailer
+public abstract class Mailer implements MailService
 {
 	private Properties properties;
 

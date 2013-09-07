@@ -2,75 +2,17 @@ package com.oogzy.mail;
 
 import java.io.ByteArrayOutputStream;
 
-public class Email
+public interface Email
 {
-	private String toAddress;
+	public String getFromAddress();
 
-	private String subject;
+	public String getToAddress();
 
-	private String body;
+	public String getBody();
 
-	private boolean htmlBody;
+	public String getSubject();
 
-	private ByteArrayOutputStream attachments;
+	public boolean isHtmlBody();
 
-	public String getToAddress()
-	{
-		return toAddress;
-	}
-
-	public void setToAddress(String to)
-	{
-		this.toAddress = to;
-	}
-
-	public String getBody()
-	{
-		return body;
-	}
-
-	public void setBody(String body)
-	{
-		this.body = body;
-	}
-
-	public String getSubject()
-	{
-		return subject;
-	}
-
-	public void setSubject(String subject)
-	{
-		this.subject = subject;
-	}
-
-	public String getContent()
-	{
-		return this.body;
-	}
-
-	public String getRecipientEmail()
-	{
-		return this.toAddress;
-	}
-
-	public boolean isHtmlBody()
-	{
-		return htmlBody;
-	}
-
-	public void setHtmlBody(boolean htmlBody)
-	{
-		this.htmlBody = htmlBody;
-	}
-
-	public ByteArrayOutputStream getAttachments()
-	{
-		return attachments;
-	}
-
-	public void setAttachments(ByteArrayOutputStream attachments)
-	{
-		this.attachments = attachments;
-	}
+	public ByteArrayOutputStream getAttachments();
 }
